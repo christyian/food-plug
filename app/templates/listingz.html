@@ -1,0 +1,134 @@
+{% extends 'base_template.html' %}
+{% block title %}
+    restaurant listings
+{% endblock %}
+
+{% block content%}
+    <section class="bg-dark p-5 text-center ">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="container p-5">
+                    <h1>hugh<span class="text-white" > Restaurant Listings</span></h1>
+                    
+                    
+                </div>
+                <div class="container align-items-center mb-5">
+                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addRestaurantModal">
+                        Add Restaurant
+                    </button>
+                </div>
+                <table class="table table-hover table-dark .table-striped">
+                    <thead>
+                        <tr>
+                            <!-- Your Columns HERE -->
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telephone</th>
+                            <th scope="col"></th>
+                            
+                            
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Your rows inside the table HERE: -->
+                        {% for item in items %}
+                            <tr>
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.location }}</td>
+                                <td>{{ item.email}}</td>
+                                <td>{{ item.telephone}}</td>
+                                
+                               
+                                <td>
+                                    <a href="#" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#editRestaurantModal{{ item.id }}">Edit</a>
+                                    <!-- <button class="btn btn-outline-warning">Add Restaurant</button> -->
+                                </td>
+                            </tr>
+
+
+             <!-- Edit Restaurant Modal -->
+             <div class="modal fade" id="editRestaurantModal{{ item.id }}" tabindex="-1" aria-labelledby="editRestaurantModalLabel{{ item.id }}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editRestaurantModalLabel{{ item.id }}">Edit Restaurant</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url_for('home.update', id=item.id) }}" method="POST" id="editRestaurantForm{{ item.id }}">
+                                <input type="hidden" id="editRestaurantId{{ item.id }}" name="id" value="{{ item.id }}">
+                                <div class="mb-3">
+                                    <label for="editRestaurantName{{ item.id }}" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="editRestaurantName{{ item.id }}" name="name" value="{{ item.name }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editRestaurantLocation{{ item.id }}" class="form-label">Location</label>
+                                    <input type="text" class="form-control" id="editRestaurantLocation{{ item.id }}" name="location" value="{{ item.location }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editRestaurantEmail{{ item.id }}" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="editRestaurantEmail{{ item.id }}" name="email" value="{{ item.email }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editRestaurantTelephone{{ item.id }}" class="form-label">Telephone</label>
+                                    <input type="tel" class="form-control" id="editRestaurantTelephone{{ item.id }}" name="telephone" value="{{ item.telephone }}" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <!-- Add Restaurant Modal -->
+                <div class="modal fade" id="addRestaurantModal" tabindex="-1" aria-labelledby="addRestaurantModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addRestaurantModalLabel">Add Restaurant</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ url_for('home.insert') }}" method="POST" id="addRestaurantForm">
+                                    <div class="mb-3">
+                                        <label for="restaurantName" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="restaurantName" name="name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="restaurantLocation" class="form-label">Location</label>
+                                        <input type="text" class="form-control" id="restaurantLocation" name="location" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="restaurantEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="restaurantEmail" name="email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="restaurantTelephone" class="form-label">Telephone</label>
+                                        <input type="tel" class="form-control" id="restaurantTelephone" name="telephone" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Add Restaurant</button>
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+             
+                
+
+                
+            
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
+

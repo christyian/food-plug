@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>FooDplug</title>
+</head>
+<body>
+    <!-- nav bar  -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
+        <div class="container">
+            <a href="#" class="navbar-brand">FooDplug</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+             <span class="navbar-toggler-icon"></span>   
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="#learn" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('home.listings') }}" class="nav-link">List restaurants</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('auth.signup_page')}}" class="nav-link">Sign up</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        
+    </nav>
+ 
+    <!-- show case -->
+    <section class="bg-dark text-light p-5 text-center">
+        <div class="container">
+          <div class="row align-items-center">
+            <!-- Left Content -->
+            <div class="col-md-6">
+              <h1>Connect to the <span class="text-warning">Nearest Restaurants</span></h1>
+              <p class="my-4">We focus on connecting our clients to the nearest  Restaurants around town for better services and experiences</p>
+              <a href="{{ url_for('auth.signup_page') }}" class="btn btn-primary btn-lg">Sign Up</a>
+
+              <!-- <button class="btn btn-primary btn-lg">Sign up</button> -->
+            </div>
+      
+            <!-- Right Image -->
+            <div class="col-md-6 text-center">
+              <img class="img-fluid w-75" src="{{url_for('static', filename='images/pexels-cottonbro-4253316.jpg')}}" alt="food">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <h2 class="fs-1 p-5 mt-5 mb-5 text-center">Most Popular Restaurants</h2>
+
+
+
+
+      <!-- boxes -->
+       <section class="p-5 mt-5 mb-5" >
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{url_for('static', filename='images/pexels-pixabay-262978.jpg')}}" class="card-img-top" alt="coder">
+                        <div class="card-body">
+                          <h5 class="card-title">Savory Bites</h5>
+                          <p class="card-text">ndulge in exquisite flavors, crafted with love. A perfect blend of taste and ambiance awaits you. Savor the moment, taste the passion</p>
+                          <a href="#" class="btn btn-primary">Details</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-md">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{url_for('static', filename='images/pexels-rachel-claire-5864290.jpg')}}" class="card-img-top" alt="website">
+                        <div class="card-body">
+                          <h5 class="card-title">Urban Spice chicken</h5>
+                          <p class="card-text">Fresh ingredients, bold flavors, and a modern twist on classic dishes. Your ultimate destination for a flavorful dining experience. Taste the difference today!</p>
+                          <a href="#" class="btn btn-primary">Details</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-md">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{url_for('static', filename='images/pexels-amar-14110990.jpg')}}" class="card-img-top" alt="coding">
+                        <div class="card-body">
+                          <h5 class="card-title">The Rustic Fork</h5>
+                          <p class="card-text">Farm-fresh goodness meets cozy charm. Enjoy hearty meals made from scratch, served with warmth and care. Experience comfort food like never before.
+                          </p>
+                          <a href="#" class="btn btn-primary">Details</a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+
+
+       </section>
+
+       <section id="learn" class="p-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md">
+                    <img src="{{url_for('static', filename='images/undraw_join_6quk.svg')}}" class="img-fluid rounded-5 w-100 " alt="personal">
+                </div>
+                <div class="col-md">
+                    <h2>Order and Delivery</h2>
+                    <p class="lead"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nesciunt, ab numquam officiis provident velit.</p>
+                    <a href="#" class="btn btn-primary">List all Restaurants</a>
+                </div>
+                
+            </div>
+
+
+        </div>
+
+
+
+       </section>
+      
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
