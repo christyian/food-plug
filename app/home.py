@@ -2,13 +2,14 @@ from flask import Blueprint, render_template, url_for, request, redirect, flash
 from .models import Restaurant
 from app.extentions import db  # import the database instance
 from flask_login import login_required, current_user
+from flask import role_required
 
 #create the home blue print
 home = Blueprint('home', __name__)
 
 @home.route('/')
 def homepage():
-    return render_template('index.html')
+    return render_template('welcome.html')
 
 @home.route('/profile')
 @login_required
@@ -17,6 +18,7 @@ def profile():
 
 @home.route('/listings')
 @login_required
+@role_required('admin')
 def listings():
     restaurants = Restaurant.query.all()
     return render_template('listingz.html', items=restaurants)

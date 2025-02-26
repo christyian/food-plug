@@ -1,6 +1,7 @@
 from app.extentions import db
 from werkzeug.security import generate_password_hash, check_password_hash 
 from flask_login import UserMixin
+from sqlalchemy import Enum
 
 class Restaurant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -27,6 +28,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     password_hash = db.Column(db.String(256), nullable=False)
+    role = db.Column(Enum('admin', 'guest', name='user_roles'), default='guest')
 
     # Add the is_active_user column
     is_active_user = db.Column(db.Boolean, default=True)  # This will be used to track if the user is active
@@ -41,7 +43,7 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password_hash, password) 
     
     def is_active(self):
-        """Returns true if the user ia active, false if not"""
+        """Returns true if the user is active, false if not"""
         return self.is_active_user
     
     def __repr__(self):
