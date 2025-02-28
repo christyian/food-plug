@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, url_for, request, redirect, flash
 from .models import Restaurant
 from app.extentions import db  # import the database instance
 from flask_login import login_required, current_user
+from sqlalchemy.exc import IntegrityError
 
 
 #create the home blue print
@@ -30,12 +31,23 @@ def insert():
         email = request.form["email"]
         telephone = request.form["telephone"]
 
-        new_restaurant = Restaurant(name=name, location=location, email=email, telephone=telephone)
-        db.session.add(new_restaurant)
-        db.session.commit()
+        # Check if the email already exists
+        existing_restaurant = Restaurant.query.filter_by(email=email).first()
+        if existing_restaurant:
+            flash('A restaurant with this email already exists!', 'warning')
+            return redirect(url_for('home.listings'))  # Redirect back to the form
 
-        flash("Restaurant added successfully!", "success")
-        return redirect(url_for('home.listings'))
+        new_restaurant = Restaurant(name=name, location=location, email=email, telephone=telephone)
+        
+        try:
+            db.session.add(new_restaurant)
+            db.session.commit()
+            flash("Restaurant added successfully!", "success")
+        except IntegrityError:
+            db.session.rollback() # Rollback the transaction to prevent the database from getting corrupted
+            flash("This email is already in use. Please use a different one!", "danger")    
+            return redirect(url_for('home.listings'))
+    
     return render_template('listingz.html')
 
 @home.route('/update/<int:id>', methods=['POST'])
