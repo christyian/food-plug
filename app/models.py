@@ -9,6 +9,7 @@ class Restaurant(db.Model):
     location = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     telephone = db.Column(db.String(15), nullable=False, unique=True)
+    is_disabled = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
         return f'<Restaurant {self.name}>'
@@ -18,6 +19,7 @@ class Restaurant(db.Model):
         self.location = location
         self.email = email
         self.telephone = telephone
+        self.is_disabled = False
 
 
 

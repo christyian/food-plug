@@ -43,7 +43,7 @@
                                 <td>{{ item.telephone}}</td>
                                 <!-- status badge -->
                                 <td>
-                                    {% if item.is_disabled %}
+                                    {% if item.disabled %}
                                         <span class="badge bg-danger">Disabled</span>
                                     {% else %}
                                         <span class="badge bg-success">Enabled</span>
@@ -51,31 +51,30 @@
                                 </td>
                                 <!-- enable/disable button -->
                                 <td>
-                                    <form action="{{ url_for('home.disable', id=item.id) }}" method="POST" style="display: inline;">
-                                        <button type="submit" class="btn btn-warning" {% if item.is_disabled %}disabled{% endif %}>
-                                            Disable
-                                        </button>
-                                    </form>
-                                
-                                    <form action="{{ url_for('home.enable', id=item.id) }}" method="POST" style="display: inline;">
-                                        <button type="submit" class="btn btn-success" {% if not item.is_disabled %}disabled{% endif %}>
-                                            Enable
-                                        </button>
-                                    </form>
+                                    {% if item.disabled %}
+                                        <form action="{{ url_for('home.enable', id=item.id) }}" method="POST" style="display: inline;">
+                                        <button type="submit" class="btn btn-outline-success">Enable</button>
+                                        </form>
+                                    {% else %}
+                                        <form action="{{ url_for('home.disable', id=item.id) }}" method="POST" style="display: inline;">
+                                        <button type="submit" class="btn btn-outline-warning">Disable</button>
+                                        </form>
+                                    {% endif %}
 
                                 </td>
-                                    
+                                
                                
                                 <td>
                                     <a href="#" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#editRestaurantModal{{ item.id }}">Edit</a>
-                                   
                                     <!-- Delete Button (Only if Disabled) -->
+                                    {% if item.disabled %}
+
                                     <form action="{{ url_for('home.delete', id=item.id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this restaurant?');">
-                                        <button type="submit" class="btn btn-danger" {% if not item.is_disabled %}disabled{% endif %}>
-                                            Delete
-                                        </button>
+                                        <button type="submit" class="btn btn-outline-danger">Delete</button>
                                     </form>
-                                    
+                                    {% else %}
+                                        <button type="button" class="btn btn-outline-danger" disabled>Delete</button>
+                                    {% endif %}
                                 </td>
                             </tr>
 

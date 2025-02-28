@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, url_for, request, redirect, flash
 from .models import Restaurant
 from app.extentions import db  # import the database instance
 from flask_login import login_required, current_user
-from flask import role_required
+
 
 #create the home blue print
 home = Blueprint('home', __name__)
@@ -18,7 +18,6 @@ def profile():
 
 @home.route('/listings')
 @login_required
-@role_required('admin')
 def listings():
     restaurants = Restaurant.query.all()
     return render_template('listingz.html', items=restaurants)
@@ -37,6 +36,7 @@ def insert():
 
         flash("Restaurant added successfully!", "success")
         return redirect(url_for('home.listings'))
+    return render_template('listingz.html')
 
 @home.route('/update/<int:id>', methods=['POST'])
 def update(id):
@@ -54,5 +54,67 @@ def update(id):
 
         flash("Restaurant updated successfully!", "success")
         return redirect(url_for('home.listings'))
+
+# @home.route('/delete/<int:id>', methods=['POST'])
+# def delete(id):
+#     restaurant = Restaurant.query.get_or_404(id)  # Get the restaurant by ID
+
+#     # Delete the restaurant
+#     db.session.delete(restaurant)
+#     db.session.commit()
+
+#     flash("Restaurant deleted successfully!", "success")
+#     return redirect(url_for('home.listings'))    
+    
+@home.route('/guest_listings')
+def guest_listings():
+    try:
+        # only fetch restaurants that are not disabled
+        restaurants = Restaurant.query.filter_by(is_disabled=False).all()
+        return render_template('guestlistings.html', items=restaurants)   
+    except Exception as e: 
+        flash(f"Error loading restaurants: {str(e)}", 'danger')
+        return redirect(url_for('home.insert'))
+
+# routes ti handle enable and disable buttons
+@home.route('/disable/<int:id>', methods=['POST'])
+def disable(id):
+    try:
+        restaurant = Restaurant.query.get_or_404(id)
+        restaurant.is_disabled = True
+        db.session.commit()
+        flash(f"{restaurant.name} has been disabled.", "warning")
+    except Exception as e:
+        db.session.rollback()
+        flash("An error occurred while disabling the restaurant.", "danger")
+    return redirect(url_for('home.listings'))
+
+@home.route('/enable/<int:id>', methods=['POST'])
+def enable(id):
+    try:
+        restaurant = Restaurant.query.get_or_404(id)
+        restaurant.is_disabled = False
+        db.session.commit()
+        flash(f"{restaurant.name} has been enabled.", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash("An error occurred while enabling the restaurant.", "danger")
+    return redirect(url_for('home.listings'))
+
+@home.route('/delete/<int:id>', methods=['POST'])
+def delete(id):
+    try:
+        restaurant = Restaurant.query.get_or_404(id)
+        if restaurant.is_disabled:
+            db.session.delete(restaurant)
+            db.session.commit()
+            flash(f"{restaurant.name} has been deleted.", "danger")
+        else:
+            flash("Cannot delete an active restaurant. Please disable it first.", "warning")
+    except Exception as e:
+        db.session.rollback()
+        flash("An error occurred while deleting the restaurant.", "danger")
+    return redirect(url_for('home.listings'))
+
 
 
