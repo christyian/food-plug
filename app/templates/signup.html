@@ -11,7 +11,7 @@
                     <div class="card-body p-4">
                         <h2 class="text-center mb-4">Create an Account</h2>
 
-                        {% with messages = get_flashed_messages(with_categories=True) %}
+                        <!-- {% with messages = get_flashed_messages(with_categories=True) %}
                         {% if messages %}
                             {% for category, message in messages %}
                                 <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
@@ -20,7 +20,7 @@
                                 </div>
                             {% endfor %}
                         {% endif %}
-                        {% endwith %}
+                        {% endwith %} -->
 
                         <form action="{{ url_for('auth.signup_page') }}" method="POST">
                             <div class="mb-3">
