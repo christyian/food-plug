@@ -4,9 +4,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+<body class="banner text-dark" style="background-image: linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.65)), url('{{ url_for('static', filename='images/bg.jpg') }}');">   
+<div class="container ">
         <div class="row justify-content-center mt-5">
-            <div class="col-md-6">
+            <div class="col-md-6 fade-in">
                 <div class="card shadow-lg rounded-lg">
                     <div class="card-body p-4">
                         <h2 class="text-center mb-4">Create an Account</h2>
@@ -43,7 +44,7 @@
                                 <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                             </div>
 
-                            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                            <button type="submit" class="btn btn-primary  btn-transition">Sign Up</button>
                         </form>
 
                         <p class="text-center mt-3">

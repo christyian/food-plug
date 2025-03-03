@@ -10,12 +10,12 @@
 <body class="banner text-light" style="background-image: linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.65)), url('{{ url_for('static', filename='images/bg.jpg') }}');">
     
     <div class="d-flex justify-content-center align-items-center vh-100">
-        <div class="text-center">
+        <div class="text-center fade-in">
             <h1 class="display-4">Welcome to <span class="text-warning">FooDplug</span></h1>
             <p class="lead">Connecting you to the best restaurants in town for unforgettable dining experiences.</p>
             <div class="mt-4">
-                <a href="{{ url_for('auth.log_in') }}" class="btn btn-outline-light me-3">Log In</a>
-                <a href="{{ url_for('auth.signup_page') }}" class="btn btn-primary">Sign Up</a>
+                <a href="{{ url_for('auth.log_in') }}" class="btn btn-outline-light me-3 btn-transition">Log In</a>
+                <a href="{{ url_for('auth.signup_page') }}" class="btn btn-primary btn-transition">Sign Up</a>
             </div>
         </div>
     </div>

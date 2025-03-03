@@ -4,10 +4,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="banner d-flex align-items-center " style="background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('{{ url_for('static', filename='images/bg.jpg') }}'); min-height:100vh">
+<div class="banner d-flex align-items-center " style="background-image: linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.65)), url('{{ url_for('static', filename='images/bg.jpg') }}'); min-height:100vh">
 <div class="container custom-card-position">
     <div class="row justify-content-center mb-5 ">
-        <div class="col-md-6">
+        <div class="col-md-6 fade-in">
             <div class="card shadow-lg rounded-lg mb-5"> <!-- Make the card slightly transparent -->
                 <div class="card-body p-4">
                     <h2 class="text-center mb-4">Log in!</h2>
@@ -35,7 +35,7 @@
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100">Log in</button>
+                        <button type="submit" class="btn btn-primary  btn-transition">Log in</button>
                     </form>
 
                     <p class="text-center mt-3">

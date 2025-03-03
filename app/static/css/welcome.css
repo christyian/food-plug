@@ -1,9 +1,10 @@
 .banner{
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url("{{ url_for('static', filename='images/bg.jpg') }}");
+    /* background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url("{{ url_for('static', filename='images/bg.jpg') }}"); */
     background-size: cover;
     background-position: center;
+    overflow: hidden;
 }
 
 .display-4 {
@@ -22,11 +23,84 @@
     margin-top: 100px;
     padding-bottom: 200px;
 }
-/* 
-.banner {
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url("{% raw %}{{ url_for('static', filename='images/pexels-amar-14110990.jpg') }}{% endraw %}");
-    background-size: cover;
-    background-position: center;
-} */
+
+.mb-5{
+
+    margin-bottom: 6rem !important;
+}
+
+/* Custom CSS for transitions */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-transition {
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-transition:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.custom-rounded{
+    border-radius: 2rem;
+}
+
+/* Slide-in from left animation */
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInLeft 1.5s ease-in-out forwards;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide-in from right animation */
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInRight 1.5s ease-in-out forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Hover effects for cards */
+.card-hover {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}

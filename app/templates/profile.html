@@ -6,94 +6,174 @@
     
     
  
-    <!-- show case -->
-    <section class="bg-dark text-light p-5 text-center">
-        <div class="container">
-          <div class="row align-items-center">
-            <!-- Left Content -->
-            <div class="col-md-6">
-                <h1><p>Welcome {{ name }}! </p></h1>
-              <h1>Connect to the <span class="text-warning">Nearest Restaurants</span></h1>
-              <p class="my-4">We focus on connecting our clients to the nearest  Restaurants around town for better services and experiences</p>
-              <!-- <a href="{{ url_for('auth.signup_page') }}" class="btn btn-primary btn-lg">Sign Up</a> -->
-
-              <!-- <button class="btn btn-primary btn-lg">Sign up</button> -->
-            </div>
-      
-            <!-- Right Image -->
-            <div class="col-md-6 text-center">
-              <img class="img-fluid w-75" src="{{url_for('static', filename='images/pexels-cottonbro-4253316.jpg')}}" alt="food">
-            </div>
+    <!-- Hero Section -->
+<section class="bg-dark text-light p-5">
+  <div class="container">
+      <div class="row align-items-center">
+          <!-- Left Content -->
+          <div class="col-md-6 fade-in">
+              <h1 class="display-4">Welcome {{ name }}!</h1>
+              <h1 class="display-3 mb-4">Connect to the <span class="text-warning">Nearest Restaurants</span></h1>
+              <p class="lead mb-4">We focus on connecting our clients to the nearest restaurants around town for better services and experiences.</p>
+              <a href="{{ url_for('home.guest_listings') }}" class="btn btn-primary btn-lg">Explore Restaurants</a>
           </div>
-        </div>
-      </section>
 
-      <h2 class="fs-1 p-5 mt-5 mb-5 text-center">Most Popular Restaurants</h2>
+          <!-- Right Image -->
+          <div class="col-md-6 text-center mt-4 mt-md-0 slide-in-right">
+              <img src="{{ url_for('static', filename='images/pexels-cottonbro-4253316.jpg') }}" 
+                   class="img-fluid rounded-3 shadow-lg" 
+                   alt="Food" 
+                   style="max-width: 90%;">
+          </div>
+      </div>
+  </div>
+</section>
 
+ <!-- About Us Section -->
+ <section class="p-5 bg-light">
+  <div class="container">
+      <div class="row align-items-center">
+          <div class="col-md-6 mb-4 mb-md-0 slide-in-left">
+              <img src="{{ url_for('static', filename='images/diet.svg') }}" class="img-fluid" alt="About Us">
+          </div>
+          <div class="col-md-6 slide-in-right">
+              <h2>About Us</h2>
+              <p class="lead">At FooDplug, we are passionate about connecting food lovers with the best restaurants in town. Our mission is to make dining experiences unforgettable by bringing you closer to your favorite cuisines.</p>
+              <a href="#" class="btn btn-outline-dark">Learn More</a>
+          </div>
+      </div>
+  </div>
+</section>
 
-
-
-      <!-- boxes -->
-       <section class="p-5 mt-5 mb-5" >
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{url_for('static', filename='images/pexels-pixabay-262978.jpg')}}" class="card-img-top" alt="coder">
-                        <div class="card-body">
+        <!-- Most Popular Restaurants -->
+    <section class="p-5">
+      <div class="container">
+          <h2 class="text-center mb-5">Most Popular Restaurants</h2>
+          <div class="row text-center g-4">
+              <div class="col-md-4 fade-in"> <!-- Added fade-in class for animation -->
+                  <div class="card h-100 card-hover rounded-4 shadow-sm"> <!-- Added card-hover class for hover effect -->
+                      <img src="{{ url_for('static', filename='images/bg.jpg') }}" class="card-img-top" alt="Savory Bites">
+                      <div class="card-body">
                           <h5 class="card-title">Savory Bites</h5>
-                          <p class="card-text">ndulge in exquisite flavors, crafted with love. A perfect blend of taste and ambiance awaits you. Savor the moment, taste the passion</p>
-                          <!-- <a href="#" class="btn btn-primary">Details</a> -->
-                        </div>
+                          <p class="card-text">Indulge in exquisite flavors, crafted with love. A perfect blend of taste and ambiance awaits you.</p>
+                          <!-- <a href="#" class="btn btn-primary">View Menu</a> -->
                       </div>
-                </div>
-                <div class="col-md">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{url_for('static', filename='images/pexels-rachel-claire-5864290.jpg')}}" class="card-img-top" alt="website">
-                        <div class="card-body">
+                  </div>
+              </div>
+              <div class="col-md-4 fade-in"> <!-- Added fade-in class for animation -->
+                  <div class="card h-100 card-hover rounded-4 shadow-sm "> 
+                      <img src="{{ url_for('static', filename='images/pexels-rachel-claire-5864290.jpg') }}" class="card-img-top" alt="Cafe Javas">
+                      <div class="card-body">
                           <h5 class="card-title">Cafe Javas</h5>
-                          <p class="card-text">Fresh ingredients, bold flavors, and a modern twist on classic dishes. Your ultimate destination for a flavorful dining experience. Taste the difference today!</p>
-                          <!-- <a href="#" class="btn btn-primary">Details</a> -->
-                        </div>
+                          <p class="card-text">Fresh ingredients, bold flavors, and a modern twist on classic dishes. Your ultimate destination for a flavorful dining experience.</p>
+                          <!-- <a href="#" class="btn btn-primary">View Menu</a> -->
                       </div>
-                </div>
-                <div class="col-md">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{url_for('static', filename='images/pexels-amar-14110990.jpg')}}" class="card-img-top" alt="coding">
-                        <div class="card-body">
+                  </div>
+              </div>
+              <div class="col-md-4 fade-in">
+                  <div class="card h-100 card-hover rounded-4 shadow-sm">
+                      <img src="{{ url_for('static', filename='images/pexels-amar-14110990.jpg') }}" class="card-img-top" alt="Foodhub">
+                      <div class="card-body">
                           <h5 class="card-title">Foodhub</h5>
-                          <p class="card-text">Farm-fresh goodness meets cozy charm. Enjoy hearty meals made from scratch, served with warmth and care. Experience comfort food like never before.
-                          </p>
-                          <!-- <a href="#" class="btn btn-primary">Details</a> -->
-                        </div>
+                          <p class="card-text">Farm-fresh goodness meets cozy charm. Enjoy hearty meals made from scratch, served with warmth and care.</p>
+                          <!-- <a href="#" class="btn btn-primary">View Menu</a> -->
                       </div>
-                </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- How It Works (Order and Delivery) -->
+  <section class="p-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 slide-in-left">
+                <h2>How It Works</h2>
+                <p class="lead">Ordering your favorite meals has never been easier. Follow these simple steps:</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-light">1. Choose a restaurant.</li>
+                    <li class="list-group-item bg-light">2. Select your favorite dishes.</li>
+                    <li class="list-group-item bg-light">3. Place your order and enjoy!</li>
+                </ul>
+                <a href="{{ url_for('home.guest_listings') }}" class="btn btn-primary mt-3">Get Started</a>
+            </div>
+            <div class="col-md-6 slide-in-right">
+                <img src="{{ url_for('static', filename='images/undraw_join_6quk.svg') }}" class="img-fluid" alt="Order and Delivery">
             </div>
         </div>
+    </div>
+</section>
 
+<!-- Contact Us Section -->
+<section class="p-5 bg-light"> <!-- Changed to bg-light for a grey background -->
+  <div class="container">
+      <h2 class="text-center mb-5">Contact Us</h2>
+      <div class="row g-4">
+          <!-- Left Side: Personal Contact Info -->
+          <div class="col-md-6 fade-in">
+              <div class="card h-100 shadow-sm custom-rounded">
+                  <div class="card-body p-4">
+                      <h3 class="card-title mb-4">Get in Touch</h3>
+                      <ul class="list-unstyled">
+                          <li class="mb-3">
+                              <i class="bi bi-geo-alt-fill me-2"></i>
+                              <strong>Address:</strong> 123 Food Street, Kampala, Uganda
+                          </li>
+                          <li class="mb-3">
+                              <i class="bi bi-telephone-fill me-2"></i>
+                              <strong>Phone:</strong> +256 782-132-456
+                          </li>
+                          <li class="mb-3">
+                              <i class="bi bi-envelope-fill me-2"></i>
+                              <strong>Email:</strong> info@foodplug.com
+                          </li>
+                      </ul>
+                      <div class="mt-4">
+                        <h5>Follow Us</h5>
+                        <a href="https://www.facebook.com/yourpage" class="text-dark me-3" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.twitter.com/yourpage" class="text-dark me-3" target="_blank"><i class="bi bi-twitter"></i></a>
+                        <a href="https://www.instagram.com/yourpage" class="text-dark me-3" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.linkedin.com/yourpage" class="text-dark" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+              </div>
+          </div>
 
-       </section>
+          <!-- Right Side: Contact Form -->
+          <div class="col-md-6 fade-in">
+              <div class="card h-100 shadow-sm custom-rounded">
+                  <div class="card-body p-4">
+                      <h3 class="card-title mb-4">Send Us a Message</h3>
+                      <form>
+                          <div class="mb-3">
+                              <label for="name" class="form-label">Name</label>
+                              <input type="text" class="form-control" id="name" required>
+                          </div>
+                          <div class="mb-3">
+                              <label for="email" class="form-label">Email</label>
+                              <input type="email" class="form-control" id="email" required>
+                          </div>
+                          <div class="mb-3">
+                              <label for="message" class="form-label">Message</label>
+                              <textarea class="form-control" id="message" rows="5" required></textarea>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Send Message</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
 
-       <section id="learn" class="p-5">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-md">
-                    <img src="{{url_for('static', filename='images/undraw_join_6quk.svg')}}" class="img-fluid rounded-5 w-100 " alt="personal">
-                </div>
-                <div class="col-md">
-                    <h2>Order and Delivery</h2>
-                    <p class="lead"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nesciunt, ab numquam officiis provident velit.</p>
-                    <a href="{{ url_for('home.guest_listings') }}" class="btn btn-primary">List all Restaurants</a>
-                </div>
-                
-            </div>
+ <!-- Footer -->
+ <footer class="bg-dark text-light text-center p-4">
+  <div class="container">
+      <p class="mb-0">&copy; 2025 FooDplug. All rights reserved.</p>
+  </div>
+</footer>
 
-
-        </div>
-
-
-
-       </section>
       
 
 
