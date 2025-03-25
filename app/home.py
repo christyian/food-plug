@@ -128,5 +128,11 @@ def delete(id):
         flash("An error occurred while deleting the restaurant.", "danger")
     return redirect(url_for('home.listings'))
 
+@home.route('/restaurant/<int:id>')
+def restaurant_details(id):
+    restaurant = Restaurant.query.get_or_404(id)  # Fetch restaurant by ID
+    return render_template('restaurant_details.html', restaurant=restaurant)
+
+
 
 

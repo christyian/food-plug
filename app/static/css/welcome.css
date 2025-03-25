@@ -30,7 +30,7 @@
 }
 
 /* Custom CSS for transitions */
-.fade-in {
+.scroll-animation.fade-in.active {
     opacity: 0;
     animation: fadeIn 1.6s ease-in-out forwards;
 }
@@ -60,7 +60,7 @@
 }
 
 /* Slide-in from left animation */
-.slide-in-left {
+.scroll-animation.slide-in-left.active{
     opacity: 0;
     transform: translateX(-50px);
     animation: slideInLeft 1.5s ease-in-out forwards;
@@ -78,7 +78,7 @@
 }
 
 /* Slide-in from right animation */
-.slide-in-right {
+.scroll-animation.slide-in-right.active {
     opacity: 0;
     transform: translateX(50px);
     animation: slideInRight 1.5s ease-in-out forwards;
